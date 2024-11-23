@@ -18,6 +18,7 @@ void print_string(const char *str) {
 // Основная функция ядра
 void kernel_main() {
     print_string("Hello from the kernel!");
+    print_stirng("8086-kernel 0.0.3")
 
     // Бесконечный цикл
     while (1) {}
