@@ -55,8 +55,10 @@ int main() {
 
     #if defined(__i386__) || defined(__x86_64__)
     print_string("This is a 32-bit or 64-bit system.");
+    print_string("8086-kernel 0.0.3.");
     #else
     print_string("This is a 16-bit system.");
+    print_string("8086-kernel 0.0.3.");
     #endif
 
     return 0;
