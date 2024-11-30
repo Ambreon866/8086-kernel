@@ -1,17 +1,3 @@
-#include <stdint.h>
-
-#if defined(__i386__) || defined(__x86_64__) // Для 32-битных и 64-битных систем
-#include <stdio.h>
-#include <stdlib.h>
-
-// Функция для вывода строки на экран в 32-битной/64-битной системе
-void print_string(const char *str) {
-    // В современных системах используем стандартный вывод
-    printf("%s\n", str);
-}
-
-#else // Для 16-битных систем
-
 #define VIDEO_MEMORY 0xB8000
 #define WHITE_ON_BLACK 0x07
 #define MAX_COLS 80
@@ -20,7 +6,6 @@ void print_string(const char *str) {
 unsigned int cursor_x = 0;
 unsigned int cursor_y = 0;
 
-// Функция для вывода строки на экран в 16-битной системе
 void print_string(const char *str) {
     char *vidptr = (char *)VIDEO_MEMORY;
 
@@ -47,19 +32,8 @@ void print_string(const char *str) {
     }
 }
 
-#endif
-
-// Основная функция
-int main() {
+void main() {
     print_string("Hello from the kernel!");
-
-    #if defined(__i386__) || defined(__x86_64__)
-    print_string("This is a 32-bit or 64-bit system.");
-    print_string("8086-kernel 0.0.3.");
-    #else
     print_string("This is a 16-bit system.");
     print_string("8086-kernel 0.0.3.");
-    #endif
-
-    return 0;
 }
